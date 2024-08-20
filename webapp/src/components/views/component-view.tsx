@@ -81,7 +81,7 @@ export default function ComponentView() {
             version: item.version,
             timestamp: item.timestamp,
             code: item.code,
-            component: module.default,
+            component: module.default
           };
         } catch (error) {
           // Handle the error (e.g., log it)

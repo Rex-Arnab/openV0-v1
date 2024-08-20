@@ -35,8 +35,7 @@ export default function Browse() {
         // Use dynamic import to load the component, and catch any errors
         let module;
         try {
-          /* @vite-ignore */
-          module = await import(importPath);
+          module = await import(/* @vite-ignore */ importPath);
         } catch (e) {
           return false;
         }
