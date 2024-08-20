@@ -29,7 +29,7 @@ function App() {
     if (!userApiKey) return;
     setProcessing(true);
 
-    const response = await fetch(`http://localhost:3000/components/share`, {
+    const response = await fetch(`http://localhost:3050/components/share`, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -60,7 +60,7 @@ function App() {
     setComponentVersions([...[]]);
     setLoadedComponents([...[]]);
     const response = await fetch(
-      `http://localhost:3000/components/get?framework=react&components=shadcn&icons=lucide&name=${name}`
+      `http://localhost:3050/components/get?framework=react&components=shadcn&icons=lucide&name=${name}`
     );
     const data = await response.json();
     console.log(data);
@@ -75,6 +75,7 @@ function App() {
         // Use dynamic import to load the component, and catch any errors
         let module;
         try {
+          /* @vite-ignore */
           module = await import(importPath);
         } catch (e) {
           return false;
@@ -104,7 +105,7 @@ function App() {
     setComponentStream("");
     let received_stream = "";
     const response = await fetch(
-      `http://localhost:3000/components/iterate/description`,
+      `http://localhost:3050/components/iterate/description`,
       {
         method: "POST",
         headers: {

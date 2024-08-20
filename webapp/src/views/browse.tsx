@@ -20,7 +20,7 @@ export default function Browse() {
 
   async function fetchComponents() {
     const response = await fetch(
-      `http://localhost:3000/components/list?framework=react&components=shadcn&icons=lucide`
+      `http://localhost:3050/components/list?framework=react&components=shadcn&icons=lucide`
     );
     const data = await response.json();
     console.log(data);
@@ -35,6 +35,7 @@ export default function Browse() {
         // Use dynamic import to load the component, and catch any errors
         let module;
         try {
+          /* @vite-ignore */
           module = await import(importPath);
         } catch (e) {
           return false;
@@ -71,7 +72,7 @@ export default function Browse() {
         generateMode === `description` ? userInputDescription : userInputJson
     });
     const response = await fetch(
-      `http://localhost:3000/components/new/${generateMode}`,
+      `http://localhost:3050/components/new/${generateMode}`,
       {
         method: "POST",
         headers: {
